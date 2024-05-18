@@ -9,6 +9,7 @@ mv store ~/ceremonyclient/node/.config
 
 cd ~/ceremonyclient/node
 git pull
+source /root/.gvm/scripts/gvm
 gvm install go1.4 -B
 gvm use go1.4
 export GOROOT_BOOTSTRAP=$GOROOT
