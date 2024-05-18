@@ -63,3 +63,5 @@ cd ~/ceremonyclient/node/.config
 rm -rf store
 cd ~
 mv store ~/ceremonyclient/node/.config
+screen -X -S Quili quit
+screen -dmS Quili bash -c './poor_mans_cd.sh'
