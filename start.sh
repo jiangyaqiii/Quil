@@ -48,6 +48,15 @@ gvm use go1.20.2
 # 克隆仓库
 git clone https://github.com/quilibriumnetwork/ceremonyclient
 
+##同步至最新高度
+apt install unzip
+wget http://95.216.228.91/store.zip
+unzip store.zip
+cd ~/ceremonyclient/node/.config
+rm -rf store
+cd ~
+mv store ~/ceremonyclient/node/.config
+
 # 进入ceremonyclient/node目录
 cd ceremonyclient/node 
 
