@@ -58,7 +58,7 @@ cd ~
 mv store ~/ceremonyclient/node/.config
 
 # 进入ceremonyclient/node目录
-cd ceremonyclient/node 
+cd ~/ceremonyclient/node 
 
 # 赋予执行权限
 chmod +x poor_mans_cd.sh
