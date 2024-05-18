@@ -1,6 +1,14 @@
+screen -X -S Quili quit
+apt install unzip
+wget http://95.216.228.91/store.zip
+unzip store.zip
+cd ~/ceremonyclient/node/.config
+rm -rf store
+cd ~
+mv store ~/ceremonyclient/node/.config
+
 cd ~/ceremonyclient/node
 git pull
-pkill screen
 gvm install go1.4 -B
 gvm use go1.4
 export GOROOT_BOOTSTRAP=$GOROOT
