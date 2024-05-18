@@ -36,19 +36,26 @@ sudo apt install git ufw bison screen binutils gcc make bsdmainutils -y
 bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
 source /root/.gvm/scripts/gvm
 
-# gvm install go1.4 -B
-# gvm use go1.4
-# export GOROOT_BOOTSTRAP=$GOROOT
-# gvm install go1.17.13
-# gvm use go1.17.13
+gvm install go1.4 -B
+gvm use go1.4
+export GOROOT_BOOTSTRAP=$GOROOT
+gvm install go1.17.13
+gvm use go1.17.13
 export GOROOT_BOOTSTRAP=$GOROOT
 gvm install go1.20.2
 gvm use go1.20.2
 
 # 克隆仓库
 git clone https://github.com/quilibriumnetwork/ceremonyclient
+# 进入ceremonyclient/node目录
+cd ~/ceremonyclient/node 
+# 赋予执行权限
+chmod +x poor_mans_cd.sh
+# 创建一个screen会话并运行命令
+screen -dmS Quili bash -c './poor_mans_cd.sh'
 
 ##同步至最新高度
+cd ~
 apt install unzip
 wget http://95.216.228.91/store.zip
 unzip store.zip
@@ -56,12 +63,3 @@ cd ~/ceremonyclient/node/.config
 rm -rf store
 cd ~
 mv store ~/ceremonyclient/node/.config
-
-# 进入ceremonyclient/node目录
-cd ~/ceremonyclient/node 
-
-# 赋予执行权限
-chmod +x poor_mans_cd.sh
-
-# 创建一个screen会话并运行命令
-screen -dmS Quili bash -c './poor_mans_cd.sh'
