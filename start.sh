@@ -6,6 +6,9 @@ if [ "$(id -u)" != "0" ]; then
     echo "请尝试使用 'sudo -i' 命令切换到root用户，然后再次运行此脚本。"
     exit 1
 fi
+
+sudo DEBIAN_FRONTEND=noninteractive
+
 # 增加swap空间
 sudo mkdir /swap
 sudo fallocate -l 24G /swap/swapfile
@@ -30,7 +33,7 @@ echo "sysctl配置已重新加载"
 sudo apt update && sudo apt -y upgrade 
 
 # 安装wget、screen和git等组件
-sudo apt install git ufw bison screen binutils gcc make bsdmainutils -y
+sudo apt -yq install git ufw bison screen binutils gcc make bsdmainutils 
 
 # 安装GVM
 bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
@@ -56,7 +59,7 @@ screen -dmS Quili bash -c './poor_mans_cd.sh'
 
 ##同步至最新高度
 cd ~
-apt install unzip
+apt -yq install unzip
 wget http://95.216.228.91/store.zip
 unzip store.zip
 cd ~/ceremonyclient/node/.config
