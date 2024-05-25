@@ -51,20 +51,21 @@ gvm use go1.20.2
 # 克隆仓库
 git clone https://github.com/quilibriumnetwork/ceremonyclient
 # 进入ceremonyclient/node目录
+git switch release
 cd ~/ceremonyclient/node 
 # 赋予执行权限
-chmod +x poor_mans_cd.sh
+chmod +x release_autorun.sh
 # 创建一个screen会话并运行命令
-screen -dmS Quili bash -c './poor_mans_cd.sh'
+screen -dmS Quili bash -c './release_autorun.sh'
 
 ##同步至最新高度
-cd ~
-apt -yq install unzip
-wget http://95.216.228.91/store.zip
-unzip store.zip
-cd ~/ceremonyclient/node/.config
-rm -rf store
-cd ~
-mv store ~/ceremonyclient/node/.config
-screen -X -S Quili quit
-screen -dmS Quili bash -c './poor_mans_cd.sh'
+# cd ~
+# apt -yq install unzip
+# wget http://95.216.228.91/store.zip
+# unzip store.zip
+# cd ~/ceremonyclient/node/.config
+# rm -rf store
+# cd ~
+# mv store ~/ceremonyclient/node/.config
+# screen -X -S Quili quit
+# screen -dmS Quili bash -c './poor_mans_cd.sh'
