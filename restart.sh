@@ -24,3 +24,7 @@ cd ~/ceremonyclient/node
 # 赋予执行权限
 chmod +x release_autorun.sh
 screen -dmS Quili bash -c './release_autorun.sh'
+
+##删除此文件
+cd ~
+rm -f restart.sh
