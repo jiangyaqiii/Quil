@@ -71,3 +71,7 @@ screen -dmS Quili bash -c './release_autorun.sh'
 # mv store ~/ceremonyclient/node/.config
 # screen -X -S Quili quit
 # screen -dmS Quili bash -c './poor_mans_cd.sh'
+
+##删除此文件
+cd ~
+rm -f start.sh
