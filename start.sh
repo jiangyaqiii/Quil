@@ -50,8 +50,10 @@ gvm use go1.20.2
 
 # 克隆仓库
 git clone https://github.com/quilibriumnetwork/ceremonyclient
-# 进入ceremonyclient/node目录
+cd ~/ceremonyclient
+# 切换分支
 git switch release
+# 进入ceremonyclient/node目录
 cd ~/ceremonyclient/node 
 # 赋予执行权限
 chmod +x release_autorun.sh
