@@ -13,3 +13,6 @@ wget -O release1_4_18.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart
 
 wget -O look_peer_id.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/look_peer_id.sh && chmod +x look_peer_id.sh && ./look_peer_id.sh
 
+查阅余额
+
+wget -O look_balance.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/look_balance.sh && chmod +x look_balance.sh && ./look_balance.sh
