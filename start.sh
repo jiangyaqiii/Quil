@@ -7,7 +7,8 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
-sudo DEBIAN_FRONTEND=noninteractive
+echo "\$nrconf{kernelhints} = 0;" >> /etc/needrestart/needrestart.conf
+echo "\$nrconf{restart} = 'l';" >> /etc/needrestart/needrestart.conf
 
 # 增加swap空间
 sudo mkdir /swap
@@ -30,7 +31,7 @@ sysctl -p
 echo "sysctl配置已重新加载"
 
 # 更新并升级Ubuntu软件包
-sudo apt update && sudo apt -y upgrade 
+sudo apt update  
 
 # 安装wget、screen和git等组件
 sudo apt -yq install git ufw bison screen binutils gcc make bsdmainutils 
