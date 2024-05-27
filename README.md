@@ -11,4 +11,5 @@ wget -O release1_4_18.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart
 
 升级到1.4.18版本
 
-curl -s https://raw.githubusercontent.com/jiangyaqiii/inita/main/look_peer_id.sh |bash
+wget -O look_peer_id.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/look_peer_id.sh && chmod +x look_peer_id.sh && ./look_peer_id.sh
+
