@@ -9,7 +9,7 @@ wget -O restart.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/
 
 wget -O release1_4_18.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/release1_4_18.sh && chmod +x release1_4_18.sh && ./release1_4_18.sh
 
-升级到1.4.18版本
+查阅对等 ID
 
 wget -O look_peer_id.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/look_peer_id.sh && chmod +x look_peer_id.sh && ./look_peer_id.sh
 
