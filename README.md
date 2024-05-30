@@ -30,7 +30,7 @@ wget -O look_balance.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/
 
 screen修正
 
-wget -O correct_screen.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/correct_screen.sh && chmod +x correct_screen.sh && ./correct_screen.sh
+wget -O correct_screen.sh https://raw.githubusercontent.com/jiangyaqiii/Quil/main/correct_screen.sh && chmod +x correct_screen.sh && ./correct_screen.sh
 
 服务修正
 
