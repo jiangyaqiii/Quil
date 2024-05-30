@@ -41,12 +41,14 @@ else
 fi
 
 ##因为git地址发生了改变，原git地址不能用了
+echo ""
 echo '停止上一次服务'
 screen -X -S Quili quit
 
 cd ~/ceremonyclient
 
 ##切换至新的git地址
+echo ""
 echo '切换至新的git地址'
 git remote set-url origin https://source.quilibrium.com/quilibrium/ceremonyclient.git
 git remote -v
@@ -68,6 +70,7 @@ cd ~/ceremonyclient/node
 # screen -dmS Quili bash -c "taskset -c $half_memory_cores ./release_autorun.sh"
 
 screen -dmS Quili bash -c "./release_autorun.sh"
+echo ""
 echo "已经启动quil程序,当前版本号为： Quilibrium Node - v1.4.18-p2 – Nebula"
 cd ~
 rm -f correct_screen.sh
