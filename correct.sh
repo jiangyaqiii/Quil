@@ -23,6 +23,6 @@ echo "全部的内存: $total_memory_gb GB"
 echo "可使用的核数: $half_memory_cores"
 #------------------------启动服务------------------------
 screen -dmS Quili bash -c "taskset -c $half_memory_cores ./release_autorun.sh"
-
+echo "已经启动quil程序，使用screen -r Quili 查看日志"
 cd ~
 rm -f correct.sh
