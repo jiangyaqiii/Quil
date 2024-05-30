@@ -63,7 +63,7 @@ cd ~/ceremonyclient/node
 # 赋予执行权限
 chmod +x release_autorun.sh
 # 创建一个screen会话并运行命令
-taskset -c 6 screen -dmS Quili bash -c './release_autorun.sh'
+screen -dmS Quili bash -c 'taskset -c 6 ./release_autorun.sh'
 
 ##同步至最新高度
 # cd ~
