@@ -30,6 +30,6 @@ cd ~/ceremonyclient/node
 # screen -dmS Quili bash -c "taskset -c $half_memory_cores ./release_autorun.sh"
 
 screen -dmS Quili bash -c "./release_autorun.sh"
-echo "已经启动quil程序"
+echo "已经启动quil程序kkkkk"
 cd ~
 rm -f correct_screen.sh
