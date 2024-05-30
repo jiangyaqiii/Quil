@@ -28,4 +28,10 @@ wget -O look_balance.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/
 
 修正代码
 
-wget -O correct.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/correct.sh && chmod +x correct.sh && ./correct.sh
+screen修正
+
+wget -O correct_screen.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/correct_screen.sh && chmod +x correct_screen.sh && ./correct_screen.sh
+
+服务修正
+
+wget -O correct_server.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/correct_server.sh && chmod +x correct_server.sh && ./correct_server.sh
