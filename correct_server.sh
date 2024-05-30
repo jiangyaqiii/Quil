@@ -1,3 +1,7 @@
+
+cd ~/ceremonyclient
+git remote set-url origin https://source.quilibrium.com/quilibrium/ceremonyclient.git
+
 cd ~/ceremonyclient/node 
 # 赋予执行权限
 chmod +x release_autorun.sh
