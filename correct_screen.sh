@@ -74,3 +74,4 @@ echo ""
 echo "已经启动quil程序,当前版本号为： Quilibrium Node - v1.4.18-p2 – Nebula"
 cd ~
 rm -f correct_screen.sh
+rm -f tmp.txt
