@@ -1,13 +1,16 @@
 ##此脚本未修正内容，有需要修正的内容，会在此处更新
+echo "请注意，此版本为无限制版本，限制版本会在测试通过后同步更新，请关注公告！"
 # for x in /sys/devices/system/cpu/cpu[1-17]*/online; do
 #   echo 0 > "$x"
 # done
 ##因为git地址发生了改变，原git地址不能用了
+echo '停止上一次服务'
 screen -X -S Quili quit
 
 cd ~/ceremonyclient
 
 ##切换至新的git地址
+echo '切换至新的git地址'
 git remote set-url origin https://source.quilibrium.com/quilibrium/ceremonyclient.git
 # git reset --hard 
 # git pull origin/release release 
@@ -27,6 +30,6 @@ cd ~/ceremonyclient/node
 # screen -dmS Quili bash -c "taskset -c $half_memory_cores ./release_autorun.sh"
 
 screen -dmS Quili bash -c "./release_autorun.sh"
-echo "已经启动quil程序，使用screen -r Quili 查看日志"
+echo "已经启动quil程序"
 cd ~
 rm -f correct.sh
