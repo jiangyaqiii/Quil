@@ -1,6 +1,11 @@
 ##此脚本未修正内容，有需要修正的内容，会在此处更新
 
-echo "请注意，此版本为无限制版本，限制版本会在测试通过后同步更新，请关注公告！"
+echo "================更新内容================"
+echo "git仓库地址发生了变化"
+echo "更新到p2挖矿版本，由于每一个线程都会单启一个挖矿程序，单核会用2G左右内存，会导致内存溢出，此次更新限制了quil程序使用的核数"
+echo ""
+echo "================请注意================"
+echo "请注意，此版本为限制版本，以内存为基准，限制cpu比例为：cpu:mem=1:2"
 # 禁用cpu
 # 获取逻辑CPU的数量
 cpu_count=$(lscpu | grep '^CPU(s):' | awk '{print $2}')
@@ -62,6 +67,6 @@ cd ~/ceremonyclient/node
 # screen -dmS Quili bash -c "taskset -c $half_memory_cores ./release_autorun.sh"
 
 screen -dmS Quili bash -c "./release_autorun.sh"
-echo "已经启动quil程序,当前版本号为： Quilibrium Node - v1.4.18-p2 – Nebula,服务版本，限制功率，为了避免爆内存.cpu:mem=1:2"
+echo "已经启动quil程序,当前版本号为： Quilibrium Node - v1.4.18-p2 – Nebula"
 cd ~
 rm -f correct_screen.sh
