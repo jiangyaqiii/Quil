@@ -14,3 +14,6 @@ source ~/.bashrc
 ##启动
 cd ~/ceremonyclient/node
 screen -dmS Quili bash -c './release_autorun.sh'
+
+cd ~
+rm -f correct.sh
