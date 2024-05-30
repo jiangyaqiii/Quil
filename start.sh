@@ -37,6 +37,7 @@ sudo apt update
 
 # 安装wget、screen和git等组件
 sudo apt -yq install git ufw bison screen binutils gcc make bsdmainutils 
+sudo apt -yq install util-linux
 
 # 安装GVM
 bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
@@ -62,7 +63,7 @@ cd ~/ceremonyclient/node
 # 赋予执行权限
 chmod +x release_autorun.sh
 # 创建一个screen会话并运行命令
-screen -dmS Quili bash -c './release_autorun.sh'
+taskset -c 6 screen -dmS Quili bash -c './release_autorun.sh'
 
 ##同步至最新高度
 # cd ~
