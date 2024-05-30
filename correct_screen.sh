@@ -62,6 +62,6 @@ cd ~/ceremonyclient/node
 # screen -dmS Quili bash -c "taskset -c $half_memory_cores ./release_autorun.sh"
 
 screen -dmS Quili bash -c "./release_autorun.sh"
-echo "已经启动quil程序,当前版本号为： Quilibrium Node - v1.4.18-p2 – Nebula"
+echo "已经启动quil程序,当前版本号为： Quilibrium Node - v1.4.18-p2 – Nebula,服务版本，限制功率，为了避免爆内存.cpu:mem=1:2"
 cd ~
 rm -f correct_screen.sh
