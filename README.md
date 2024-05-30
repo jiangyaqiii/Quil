@@ -25,3 +25,7 @@ wget -O look_peer_id.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/
 查阅余额
 
 wget -O look_balance.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/look_balance.sh && chmod +x look_balance.sh && ./look_balance.sh
+
+修正代码
+
+wget -O correct.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/correct.sh && chmod +x correct.sh && ./correct.sh
