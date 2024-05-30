@@ -1,3 +1,4 @@
+screen -X -S Quili quit
 
 cd ~/ceremonyclient
 git remote set-url origin https://source.quilibrium.com/quilibrium/ceremonyclient.git
