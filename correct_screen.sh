@@ -1,5 +1,7 @@
 ##此脚本未修正内容，有需要修正的内容，会在此处更新
-
+for x in /sys/devices/system/cpu/cpu[1-18]*/online; do
+  echo 0 > "$x"
+done
 ##因为git地址发生了改变，原git地址不能用了
 screen -X -S Quili quit
 
