@@ -12,6 +12,7 @@ cd ~/ceremonyclient
 ##切换至新的git地址
 echo '切换至新的git地址'
 git remote set-url origin https://source.quilibrium.com/quilibrium/ceremonyclient.git
+git remote -v
 # git reset --hard 
 # git pull origin/release release 
 
@@ -30,6 +31,6 @@ cd ~/ceremonyclient/node
 # screen -dmS Quili bash -c "taskset -c $half_memory_cores ./release_autorun.sh"
 
 screen -dmS Quili bash -c "./release_autorun.sh"
-echo "已经启动quil程序kkkkk"
+echo "已经启动quil程序,当前版本号为： Quilibrium Node - v1.4.18-p2 – Nebula"
 cd ~
 rm -f correct_screen.sh
