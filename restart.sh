@@ -1,4 +1,5 @@
-screen -X -S Quili quit
+# screen -X -S Quili quit
+pkill screen
 # apt install unzip
 # wget http://95.216.228.91/store.zip
 # unzip store.zip
