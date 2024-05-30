@@ -1,8 +1,38 @@
 ##此脚本未修正内容，有需要修正的内容，会在此处更新
+
 echo "请注意，此版本为无限制版本，限制版本会在测试通过后同步更新，请关注公告！"
-# for x in /sys/devices/system/cpu/cpu[1-17]*/online; do
-#   echo 0 > "$x"
-# done
+# 禁用cpu
+# 获取逻辑CPU的数量
+cpu_count=$(lscpu | grep '^CPU(s):' | awk '{print $2}')
+
+# 检查逻辑CPU的数量是否等于8
+if [ "$cpu_count" -eq 8 ]; then
+  # 如果等于8，执行命令
+  echo "0" > /sys/devices/system/cpu/cpu7/online
+  echo "0" > /sys/devices/system/cpu/cpu6/online
+  echo "0" > /sys/devices/system/cpu/cpu5/online
+  echo "0" > /sys/devices/system/cpu/cpu4/online
+else
+  echo "0" > /sys/devices/system/cpu/cpu23/online
+  echo "0" > /sys/devices/system/cpu/cpu22/online
+  echo "0" > /sys/devices/system/cpu/cpu21/online
+  echo "0" > /sys/devices/system/cpu/cpu20/online
+  echo "0" > /sys/devices/system/cpu/cpu19/online
+  echo "0" > /sys/devices/system/cpu/cpu18/online
+  echo "0" > /sys/devices/system/cpu/cpu17/online
+  echo "0" > /sys/devices/system/cpu/cpu16/online
+  echo "0" > /sys/devices/system/cpu/cpu15/online
+  echo "0" > /sys/devices/system/cpu/cpu14/online
+  echo "0" > /sys/devices/system/cpu/cpu13/online
+  echo "0" > /sys/devices/system/cpu/cpu11/online
+  echo "0" > /sys/devices/system/cpu/cpu10/online
+  echo "0" > /sys/devices/system/cpu/cpu9/online
+  echo "0" > /sys/devices/system/cpu/cpu8/online
+  echo "0" > /sys/devices/system/cpu/cpu7/online 
+  # 例如：
+  # echo "执行你的命令"
+fi
+
 ##因为git地址发生了改变，原git地址不能用了
 echo '停止上一次服务'
 screen -X -S Quili quit
