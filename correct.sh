@@ -5,26 +5,24 @@ screen -X -S Quili quit
 
 cd ~/ceremonyclient
 
-##分配给git 5G的内存，避免拉取代码时报错
-git config --global pack.windowMemory 5g
-git config --global pack.packSizeLimit 5g
-git config --global pack.window 0
-git config --global core.packedGitLimit 5g
-git config --global core.packedGitWindowSize 5g
-
 ##切换至新的git地址
-git remote set-url origin https://source.quilibrium.com/quilibrium/ceremonyclient.git.
-
-##拉取最新的代码
-git pull
-
-##限制每个线程的占用内存数量
-echo 'ulimit -v 640000' >> ~/.bashrc
-source ~/.bashrc
+git remote set-url origin https://github.com/a3165458/ceremonyclient.git
+git reset --hard 
+git pull origin/release release 
 
 ##启动
 cd ~/ceremonyclient/node
-screen -dmS Quili bash -c './release_autorun.sh'
+#------------------------计算内存/2的核数，用来运行程序------------------------
+# 获取系统内存大小（单位为 KB）
+total_memory_kb=$(grep MemTotal /proc/meminfo | awk '{print $2}')
+# 将内存大小转换为 GB
+total_memory_gb=$(echo "$total_memory_kb / 1024 / 1024" | bc)
+# 计算内存的一半所需的 CPU 核数
+half_memory_cores=$(echo "($total_memory_gb / 2)" | bc)
+echo "全部的内存: $total_memory_gb GB"
+echo "可使用的核数: $half_memory_cores"
+#------------------------启动服务------------------------
+screen -dmS Quili bash -c "taskset -c $half_memory_cores ./release_autorun.sh"
 
 cd ~
 rm -f correct.sh
