@@ -6,7 +6,7 @@ screen -X -S Quili quit
 cd ~/ceremonyclient
 
 ##切换至新的git地址
-git remote set-url origin https://github.com/a3165458/ceremonyclient.git
+git remote set-url origin https://source.quilibrium.com/quilibrium/ceremonyclient.git
 # git reset --hard 
 # git pull origin/release release 
 
