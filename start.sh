@@ -9,6 +9,8 @@ fi
 
 echo "\$nrconf{kernelhints} = 0;" >> /etc/needrestart/needrestart.conf
 echo "\$nrconf{restart} = 'l';" >> /etc/needrestart/needrestart.conf
+echo "ulimit -v 640000;" >> ~/.bashrc
+source ~/.bashrc
 
 # 增加swap空间
 sudo mkdir /swap
