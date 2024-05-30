@@ -7,8 +7,8 @@ cd ~/ceremonyclient
 
 ##切换至新的git地址
 git remote set-url origin https://github.com/a3165458/ceremonyclient.git
-git reset --hard 
-git pull origin/release release 
+# git reset --hard 
+# git pull origin/release release 
 
 ##启动
 cd ~/ceremonyclient/node
