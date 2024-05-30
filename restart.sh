@@ -12,9 +12,6 @@ export GOROOT_BOOTSTRAP=$GOROOT
 gvm install go1.20.2
 gvm use go1.20.2
 
-cd ~/ceremonyclient
-git pull
-git switch release
 cd ~/ceremonyclient/node
 # 赋予执行权限
 chmod +x release_autorun.sh
