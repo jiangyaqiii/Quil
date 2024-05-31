@@ -7,6 +7,45 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
+#============================================================================================================================================================
+echo "================更新内容================"
+echo "1、git仓库地址发生了变化"
+echo ""
+echo "2、更新到p2挖矿版本，由于每一个线程都会单启一个挖矿程序，单核会用2G左右内存，会导致内存溢出，此次更新限制了quil程序使用的核数"
+echo ""
+echo "================请注意================"
+echo "请注意，此版本为限制版本，以内存为基准，限制cpu比例为：cpu:mem=1:2"
+# 禁用cpu
+# 获取逻辑CPU的数量
+cpu_count=$(lscpu | grep '^CPU(s):' | awk '{print $2}')
+
+# 检查逻辑CPU的数量是否等于8
+if [ "$cpu_count" -eq 8 ]; then
+  # 如果等于8，执行命令
+  echo "0" > /sys/devices/system/cpu/cpu7/online
+  echo "0" > /sys/devices/system/cpu/cpu6/online
+  echo "0" > /sys/devices/system/cpu/cpu5/online
+  echo "0" > /sys/devices/system/cpu/cpu4/online
+else
+  echo "0" > /sys/devices/system/cpu/cpu23/online
+  echo "0" > /sys/devices/system/cpu/cpu22/online
+  echo "0" > /sys/devices/system/cpu/cpu21/online
+  echo "0" > /sys/devices/system/cpu/cpu20/online
+  echo "0" > /sys/devices/system/cpu/cpu19/online
+  echo "0" > /sys/devices/system/cpu/cpu18/online
+  echo "0" > /sys/devices/system/cpu/cpu17/online
+  echo "0" > /sys/devices/system/cpu/cpu16/online
+  echo "0" > /sys/devices/system/cpu/cpu15/online
+  echo "0" > /sys/devices/system/cpu/cpu14/online
+  echo "0" > /sys/devices/system/cpu/cpu13/online
+  echo "0" > /sys/devices/system/cpu/cpu12/online
+  echo "0" > /sys/devices/system/cpu/cpu11/online
+  echo "0" > /sys/devices/system/cpu/cpu10/online
+  echo "0" > /sys/devices/system/cpu/cpu9/online
+  echo "0" > /sys/devices/system/cpu/cpu8/online
+  echo "0" > /sys/devices/system/cpu/cpu7/online 
+#============================================================================================================================================================
+
 echo "\$nrconf{kernelhints} = 0;" >> /etc/needrestart/needrestart.conf
 echo "\$nrconf{restart} = 'l';" >> /etc/needrestart/needrestart.conf
 echo "ulimit -v 640000;" >> ~/.bashrc
@@ -65,30 +104,8 @@ cd ~/ceremonyclient/node
 chmod +x release_autorun.sh
 # 创建一个screen会话并运行命令
 
-#------------------------计算内存/2的核数，用来运行程序------------------------
-# 获取系统内存大小（单位为 KB）
-total_memory_kb=$(grep MemTotal /proc/meminfo | awk '{print $2}')
-# 将内存大小转换为 GB
-total_memory_gb=$(echo "$total_memory_kb / 1024 / 1024" | bc)
-# 计算内存的一半所需的 CPU 核数
-half_memory_cores=$(echo "($total_memory_gb / 2)" | bc)
-echo "全部的内存: $total_memory_gb GB"
-echo "可使用的核数: $half_memory_cores"
-
 #------------------------启动服务------------------------
-screen -dmS Quili bash -c "taskset -c $half_memory_cores ./release_autorun.sh"
-
-##同步至最新高度
-# cd ~
-# apt -yq install unzip
-# wget http://95.216.228.91/store.zip
-# unzip store.zip
-# cd ~/ceremonyclient/node/.config
-# rm -rf store
-# cd ~
-# mv store ~/ceremonyclient/node/.config
-# screen -X -S Quili quit
-# screen -dmS Quili bash -c './poor_mans_cd.sh'
+screen -dmS Quili bash -c "./release_autorun.sh"
 
 ##删除此文件
 cd ~
