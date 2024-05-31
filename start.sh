@@ -44,6 +44,7 @@ else
   echo "0" > /sys/devices/system/cpu/cpu9/online
   echo "0" > /sys/devices/system/cpu/cpu8/online
   echo "0" > /sys/devices/system/cpu/cpu7/online 
+fi
 #============================================================================================================================================================
 
 echo "\$nrconf{kernelhints} = 0;" >> /etc/needrestart/needrestart.conf
