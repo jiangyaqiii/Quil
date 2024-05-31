@@ -110,4 +110,6 @@ screen -dmS Quili bash -c "./release_autorun.sh"
 
 ##删除此文件
 cd ~
+echo "1"
 rm -f start.sh
+echo "2"
