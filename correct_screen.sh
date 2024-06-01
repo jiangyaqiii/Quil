@@ -40,6 +40,8 @@ else
   # echo "执行你的命令"
 fi
 
+apt install cpulimit -y
+
 ##因为git地址发生了改变，原git地址不能用了
 echo ""
 echo '停止上一次服务'
