@@ -52,6 +52,7 @@ sudo apt update
 # 安装wget、screen和git等组件
 sudo apt -yq install git ufw bison screen binutils gcc make bsdmainutils 
 sudo apt -yq install util-linux
+apt install cpulimit -y
 
 # 安装GVM
 bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
