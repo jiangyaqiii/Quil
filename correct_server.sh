@@ -28,7 +28,7 @@ rm ~/ceremonyclient/node/.config/SELF_TEST
 journalctl -u ceremonyclient.service -f -n 500
 echo "================修正服务版本================"
 echo "================上版本更新内容================"
-echo "================flag:v2================"
+echo "================flag:v3================"
 echo "1、git仓库地址发生了变化"
 echo ""
 echo "2、更新到p2挖矿版本，由于每一个线程都会单启一个挖矿程序，单核会用2G左右内存，会导致内存溢出，此次更新限制了quil程序使用的核数"
