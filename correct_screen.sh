@@ -13,23 +13,16 @@ if [ "$cpu_count" -eq 8 ]; then
   echo "1" > /sys/devices/system/cpu/cpu5/online
   echo "1" > /sys/devices/system/cpu/cpu4/online
 else
-  echo "1" > /sys/devices/system/cpu/cpu23/online
-  echo "1" > /sys/devices/system/cpu/cpu22/online
-  echo "1" > /sys/devices/system/cpu/cpu21/online
-  echo "1" > /sys/devices/system/cpu/cpu20/online
-  echo "1" > /sys/devices/system/cpu/cpu19/online
-  echo "1" > /sys/devices/system/cpu/cpu18/online
-  echo "1" > /sys/devices/system/cpu/cpu17/online
-  echo "1" > /sys/devices/system/cpu/cpu16/online
-  echo "1" > /sys/devices/system/cpu/cpu15/online
-  echo "1" > /sys/devices/system/cpu/cpu14/online
-  echo "1" > /sys/devices/system/cpu/cpu13/online
-  echo "1" > /sys/devices/system/cpu/cpu12/online
-  echo "1" > /sys/devices/system/cpu/cpu11/online
-  echo "1" > /sys/devices/system/cpu/cpu10/online
-  echo "1" > /sys/devices/system/cpu/cpu9/online
-  echo "1" > /sys/devices/system/cpu/cpu8/online
-  echo "1" > /sys/devices/system/cpu/cpu7/online 
+  echo "0" > /sys/devices/system/cpu/cpu23/online
+  echo "0" > /sys/devices/system/cpu/cpu22/online
+  echo "0" > /sys/devices/system/cpu/cpu21/online
+  echo "0" > /sys/devices/system/cpu/cpu20/online
+  echo "0" > /sys/devices/system/cpu/cpu19/online
+  echo "0" > /sys/devices/system/cpu/cpu18/online
+  echo "0" > /sys/devices/system/cpu/cpu17/online
+  echo "0" > /sys/devices/system/cpu/cpu16/online
+  echo "0" > /sys/devices/system/cpu/cpu15/online
+  echo "0" > /sys/devices/system/cpu/cpu14/online
   # 例如：
   # echo "执行你的命令"
 fi
