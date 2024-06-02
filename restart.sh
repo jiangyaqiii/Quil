@@ -1,5 +1,5 @@
 #------------------------停止上一个会话------------------------
-# screen -X -S Quili quit
+screen -X -S Quili quit
 
 #------------------------将go设为全局变量------------------------
 source /root/.gvm/scripts/gvm
@@ -14,7 +14,7 @@ gvm use go1.20.2
 
 cd ~/ceremonyclient/node
 # 赋予执行权限
-chmod +x release_autorun.sh
+# chmod +x release_autorun.sh
 #------------------------计算内存/2的核数，用来运行程序------------------------
 # 获取系统内存大小（单位为 KB）
 total_memory_kb=$(grep MemTotal /proc/meminfo | awk '{print $2}')
