@@ -1,6 +1,7 @@
 #------------------------停止上一个会话------------------------
 screen -X -S Quili quit
-
+echo ''
+echo '已停止上一会话'
 #------------------------将go设为全局变量------------------------
 source /root/.gvm/scripts/gvm
 gvm install go1.4 -B
@@ -26,7 +27,8 @@ cd ~/ceremonyclient/node
 # echo "可使用的核数: $half_memory_cores"
 #------------------------启动服务------------------------
 screen -dmS Quili bash -c " ./release_autorun.sh"
-
+echo ''
+echo '重启完成'
 ##删除此文件
 cd ~
 rm -f restart.sh
