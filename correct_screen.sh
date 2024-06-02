@@ -33,6 +33,7 @@ apt install cpulimit -y
 echo ""
 echo '停止上一次服务'
 screen -X -S Quili quit
+service ceremonyclient stop
 
 cd ~/ceremonyclient
 
