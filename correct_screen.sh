@@ -104,7 +104,9 @@ sudo update-grub
 echo ""
 echo "将启动监控面板和启动quil程序做成服务，重启后自动开启"
 echo '#!/bin/bash
-screen -dmS Quili bash -c "/root/ceremonyclient/node/release_autorun.sh"
+cd ~/ceremonyclient/node
+chmod +x release_autorun.sh
+screen -dmS Quili bash -c "./release_autorun.sh"
 nohup python3 /root/system_init/control.py &' > /root/start_services.sh
 ##赋予执行权限
 sudo chmod +x /root/start_services.sh
