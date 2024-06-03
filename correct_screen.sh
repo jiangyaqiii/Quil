@@ -87,6 +87,11 @@ echo "上一版本引入cpulimt模块， 重启会有概率出现内存分页错
 echo ""
 echo "修复这一报错"
 # ================================================================================================================================
+echo ""
+echo "关闭上一次会话"
+screen -X -S Quili quit
+echo ""
+echo "清除缓存"
 sudo rm -rf /var/log/*
 sudo rm -rf /tmp/*
 sudo apt-get remove --purge $(dpkg --get-selections l grep -v deinstall |grep -v "linux-image" |awk '{print $1}')
@@ -96,6 +101,30 @@ cp -r /etc/skel/. /root/
 sudo rm -rf /etc/network/interfaces
 sudo cp /etc/network/interfaces.dpkg-dist /etc/network/interfaces
 sudo update-grub
+echo ""
+echo "将启动监控面板和启动quil程序做成服务，重启后自动开启"
+echo '#!/bin/bash
+screen -dmS Quili bash -c "/root/ceremonyclient/node/release_autorun.sh"
+nohup python3 /root/system_init/control.py &' > /root/start_services.sh
+##赋予执行权限
+sudo chmod +x /root/start_services.sh
+
+echo ""
+echo "将start_services做成服务，重启后自动开启"
+
+echo '[Unit]
+Description=Run autorun script on startup
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /root/start_services.sh
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target' > /etc/systemd/system/autorun.service
+sudo systemctl daemon-reload
+sudo systemctl enable autorun.service
+sudo systemctl start autorun.service
 echo ""
 echo "修复完成，机器自动重启，等待几分钟后，点击重启服务"
 sudo reboot
