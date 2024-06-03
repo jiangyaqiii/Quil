@@ -56,8 +56,8 @@ gvm use go1.20.2
 
 # 克隆仓库
 # git clone https://github.com/quilibriumnetwork/ceremonyclient
-# git clone https://source.quilibrium.com/quilibrium/ceremonyclient.git
-git clone https://github.com/a3165458/ceremonyclient.git
+git clone https://source.quilibrium.com/quilibrium/ceremonyclient.git
+# git clone https://github.com/a3165458/ceremonyclient.git
 cd ~/ceremonyclient
 # 切换分支
 git switch release
