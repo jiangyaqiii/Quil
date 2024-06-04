@@ -126,7 +126,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable autorun.service
 sudo systemctl start autorun.service
 echo ""
-echo "修复完成，机器自动重启，等待几分钟后，点击重启服务"
+echo "修复完成，机器自动重启，无需操作，会自动重启相关服务"
 sudo reboot
 
 
