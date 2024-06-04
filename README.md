@@ -38,5 +38,5 @@ wget -O correct_server.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStar
 
 简单重启
 
-curl -s https://raw.githubusercontent.com/jiangyaqiii/inita/main/simple_restart.sh |bash
+curl -s https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/simple_restart.sh |bash
 
