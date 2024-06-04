@@ -104,8 +104,7 @@ echo "将启动监控面板和启动quil程序做成服务，重启后自动开�
 echo '#!/bin/bash
 cd ~/ceremonyclient/node
 chmod +x release_autorun.sh
-screen -dmS Quili bash -c "./release_autorun.sh"
-nohup python3 /root/system_init/control.py &' > /root/start_services.sh
+screen -dmS Quili bash -c "./release_autorun.sh"' > /root/start_services.sh
 ##赋予执行权限
 sudo chmod +x /root/start_services.sh
 
