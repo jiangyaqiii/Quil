@@ -77,6 +77,37 @@
 # rm -f correct_screen.sh
 # rm -f tmp.txt
 
+# ===================================公共模块===监控screen模块======================================================================
+cd ~
+#监控screen脚本
+echo '#!/bin/bash
+while true
+do
+    if ! screen -list | grep -q "Quili"; then
+        echo "Screen session not found, restarting..."
+        cd ~/ceremonyclient/node 
+        screen -dmS Quili bash -c "./release_autorun.sh"
+    fi
+    sleep 10  # 每隔10秒检查一次
+done' > monit.sh
+##给予执行权限
+chmod +x monit.sh
+##将执行监控screen脚本的动作，封装为服务
+echo '[Unit]
+Description=Run autorun script on startup
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /root/monit.sh
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target' > /etc/systemd/system/automonit.service
+sudo systemctl daemon-reload
+sudo systemctl enable automonit.service
+sudo systemctl start automonit.service
+# ================================================================================================================================
+
 
 # ================================================================================================================================
 echo "================flag:v3================"
