@@ -85,27 +85,12 @@ while true
 do
     if ! screen -list | grep -q "Quili"; then
         echo "Screen session not found, restarting..."
-        cd ~/ceremonyclient/node 
-        screen -dmS Quili bash -c "./release_autorun.sh"
+        screen -dmS Quili bash -c "./root/ceremonyclient/node/release_autorun.sh"
     fi
     sleep 10  # 每隔10秒检查一次
 done' > monit.sh
 ##给予执行权限
 chmod +x monit.sh
-##将执行监控screen脚本的动作，封装为服务
-echo '[Unit]
-Description=Run autorun script on startup
-
-[Service]
-Type=oneshot
-ExecStart=/bin/bash /root/monit.sh
-RemainAfterExit=true
-
-[Install]
-WantedBy=multi-user.target' > /etc/systemd/system/automonit.service
-sudo systemctl daemon-reload
-sudo systemctl enable automonit.service
-sudo systemctl start automonit.service
 # ================================================================================================================================
 
 
@@ -133,9 +118,8 @@ sudo update-grub
 echo ""
 echo "将启动监控面板和启动quil程序做成服务，重启后自动开启"
 echo '#!/bin/bash
-cd ~/ceremonyclient/node
-chmod +x release_autorun.sh
-screen -dmS Quili bash -c "./release_autorun.sh"' > /root/start_services.sh
+cd ~
+./monitor_screen.sh &' > /root/start_services.sh
 ##赋予执行权限
 sudo chmod +x /root/start_services.sh
 
