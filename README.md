@@ -35,3 +35,6 @@ wget -O correct_screen.sh https://raw.githubusercontent.com/jiangyaqiii/Quil/mai
 服务修正
 
 wget -O correct_server.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/correct_server.sh && chmod +x correct_server.sh && ./correct_server.sh
+
+简单重启
+
