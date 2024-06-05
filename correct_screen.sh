@@ -87,9 +87,17 @@ echo "================flag:v3================"
 echo "================更新内容================"
 echo "1、上一版本引入cpulimt模块， 重启会有概率出现内存分页错误：fatal error: failed to reserve page summary memory"
 echo ""
-echo "1、新增监控服务，quil服务掉线之后自动重启"
+echo "2、新增监控服务，quil服务掉线之后自动重启"
 echo ""
-# ================================================================================================================================
+echo "3、新增grpcurl，修改了config.yaml配置文件，可以直接在本机进行peer在线查询"
+echo ""
+# ================================以root用户运行脚本================================================================================================
+# 检查是否以root用户运行脚本
+if [ "$(id -u)" != "0" ]; then
+    echo "此脚本需要以root用户权限运行。"
+    echo "请尝试使用 'sudo -i' 命令切换到root用户，然后再次运行此脚本。"
+    exit 1
+fi
 # ===================================公共模块===监控screen模块======================================================================
 cd ~
 #监控screen脚本
@@ -122,12 +130,29 @@ sudo systemctl start quili_monitor.service
 sudo systemctl status quili_monitor.service
 
 # ===================================增加配置文件，可以查询peer在线情况======================================================================
-
+echo ''
+echo '将go加入全局环境'
+source /root/.gvm/scripts/gvm
+gvm install go1.4 -B
+gvm use go1.4
+export GOROOT_BOOTSTRAP=$GOROOT
+gvm install go1.17.13
+gvm use go1.17.13
+export GOROOT_BOOTSTRAP=$GOROOT
+gvm install go1.20.2
+gvm use go1.20.2
+echo '查询go的版本号'
+go -v
+echo ''
+echo '安装grpcurl'
+go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest
+echo ''
+echo '将listenGrpcMultiaddr和listenRESTMultiaddr写入配置文件'
 sed -i 's|listenGrpcMultiaddr: ""|listenGrpcMultiaddr: "/ip4/127.0.0.1/tcp/8337"|' ./ceremonyclient/node/.config/config.yml
 sed -i 's|listenRESTMultiaddr: ""|listenRESTMultiaddr: "/ip4/127.0.0.1/tcp/8338"|' ./ceremonyclient/node/.config/config.yml
 
-# ===================================执行过程======================================================================
-echo "================执行过程================"
+# ===================================清除缓存执行过程======================================================================
+echo "================清除缓存执行过程================"
 echo ""
 echo "关闭上一次会话"
 screen -X -S Quili quit
