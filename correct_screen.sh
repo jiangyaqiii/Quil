@@ -78,19 +78,19 @@
 # rm -f tmp.txt
 
 # ===================================公共模块===监控screen模块======================================================================
-cd ~
-#监控screen脚本
-echo '#!/bin/bash
-while true
-do
-    if ! screen -list | grep -q "Quili"; then
-        echo "Screen session not found, restarting..."
-        screen -dmS Quili bash -c "./root/ceremonyclient/node/release_autorun.sh"
-    fi
-    sleep 10  # 每隔10秒检查一次
-done' > monit.sh
-##给予执行权限
-chmod +x monit.sh
+# cd ~
+# #监控screen脚本
+# echo '#!/bin/bash
+# while true
+# do
+#     if ! screen -list | grep -q "Quili"; then
+#         echo "Screen session not found, restarting..."
+#         screen -dmS Quili bash -c "./root/ceremonyclient/node/release_autorun.sh"
+#     fi
+#     sleep 10  # 每隔10秒检查一次
+# done' > monit.sh
+# ##给予执行权限
+# chmod +x monit.sh
 # ================================================================================================================================
 
 
