@@ -1,8 +1,9 @@
 #!/bin/bash
-echo 'flag:v3'
+echo '=================flag:v4================='
 cd ~/ceremonyclient/node
 ./node-1.4.18-linux-amd64 -peer-id
 cd ~
+echo ''
 echo '查询peer在线情况'
 wget -O - https://raw.githubusercontent.com/0xOzgur/QuilibriumTools/main/visibility_check.sh | bash
 echo ''
