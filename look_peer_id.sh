@@ -4,6 +4,7 @@ cd ~/ceremonyclient/node
 ./node-1.4.18-linux-amd64 -peer-id
 cd ~
 echo ''
+echo '========================================='
 echo '查询peer在线情况'
 wget -O - https://raw.githubusercontent.com/0xOzgur/QuilibriumTools/main/visibility_check.sh | bash
 echo ''
