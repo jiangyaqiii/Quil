@@ -12,7 +12,7 @@ wget -O restart.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/
 
 ===========================================
 
-===============查阅对等 ID================
+===============查阅对等ID================
 
 wget -O look_peer_id.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/look_peer_id.sh && chmod +x look_peer_id.sh && ./look_peer_id.sh
 
@@ -33,10 +33,6 @@ curl -s https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/simple_rest
 ===============监控自启动服务================
 
 wget -O monit.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/monit.sh && chmod +x monit.sh && ./monit.sh
-
-===========================================
-
-===============查询peer在线情况================
 
 ===========================================
 
