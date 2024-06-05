@@ -120,6 +120,12 @@ sudo systemctl daemon-reload
 sudo systemctl enable quili_monitor.service
 sudo systemctl start quili_monitor.service
 sudo systemctl status quili_monitor.service
+
+# ===================================增加配置文件，可以查询peer在线情况======================================================================
+
+sed -i 's|listenGrpcMultiaddr: ""|listenGrpcMultiaddr: "/ip4/127.0.0.1/tcp/8337"|' ./ceremonyclient/node/.config/config.yml
+sed -i 's|listenRESTMultiaddr: ""|listenRESTMultiaddr: "/ip4/127.0.0.1/tcp/8338"|' ./ceremonyclient/node/.config/config.yml
+
 # ===================================执行过程======================================================================
 echo "================执行过程================"
 echo ""
