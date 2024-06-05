@@ -119,7 +119,7 @@ echo ""
 echo "将启动监控面板和启动quil程序做成服务，重启后自动开启"
 echo '#!/bin/bash
 cd ~
-./monitor_screen.sh &' > /root/start_services.sh
+screen -dmS Quili bash -c "./release_autorun.sh"' > /root/start_services.sh
 ##赋予执行权限
 sudo chmod +x /root/start_services.sh
 
