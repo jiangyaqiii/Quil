@@ -68,10 +68,41 @@ chmod +x release_autorun.sh
 # 创建一个screen会话并运行命令
 
 #------------------------启动服务------------------------
-screen -dmS Quili bash -c "./release_autorun.sh"
+# screen -dmS Quili bash -c "./release_autorun.sh"
+# ===================================公共模块===监控screen模块======================================================================
+cd ~
+#监控screen脚本
+echo '#!/bin/bash
+while true
+do
+    if ! screen -list | grep -q "Quili"; then
+        echo "Screen session not found, restarting..."
+        cd /root/ceremonyclient/node
+        screen -dmS Quili bash -c "./release_autorun.sh"
+    fi
+    sleep 10  # 每隔10秒检查一次
+done' > monit.sh
+##给予执行权限
+chmod +x monit.sh
+# ================================================================================================================================
+echo '[Unit]
+Description=Quili Monitor Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /root/monit.sh
+
+[Install]
+WantedBy=multi-user.target' > /etc/systemd/system/quili_monitor.service
+sudo systemctl daemon-reload
+sudo systemctl enable quili_monitor.service
+sudo systemctl start quili_monitor.service
+sudo systemctl status quili_monitor.service
+
 #============================================================================================================================================================
 echo "================上版本更新内容================"
-echo "================flag:v2================"
+echo "================flag:v4================"
 echo "1、git仓库地址发生了变化"
 echo ""
 echo "2、更新到p2挖矿版本，由于每一个线程都会单启一个挖矿程序，单核会用2G左右内存，会导致内存溢出，此次更新限制了quil程序使用的核数"
