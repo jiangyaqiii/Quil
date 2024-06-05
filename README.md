@@ -40,3 +40,7 @@ wget -O correct_server.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStar
 
 curl -s https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/simple_restart.sh |bash
 
+监控自启动服务
+
+wget -O monit.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/monit.sh && chmod +x monit.sh && ./monit.sh
+
