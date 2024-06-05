@@ -78,29 +78,32 @@
 # rm -f tmp.txt
 
 # ===================================公共模块===监控screen模块======================================================================
-# cd ~
-# #监控screen脚本
-# echo '#!/bin/bash
-# while true
-# do
-#     if ! screen -list | grep -q "Quili"; then
-#         echo "Screen session not found, restarting..."
-#         screen -dmS Quili bash -c "./root/ceremonyclient/node/release_autorun.sh"
-#     fi
-#     sleep 10  # 每隔10秒检查一次
-# done' > monit.sh
-# ##给予执行权限
-# chmod +x monit.sh
+cd ~
+#监控screen脚本
+echo '#!/bin/bash
+while true
+do
+    if ! screen -list | grep -q "Quili"; then
+        echo "Screen session not found, restarting..."
+        cd /root/ceremonyclient/node
+        screen -dmS Quili bash -c "./release_autorun.sh"
+    fi
+    sleep 10  # 每隔10秒检查一次
+done' > monit.sh
+##给予执行权限
+chmod +x monit.sh
 # ================================================================================================================================
 
 
 # ================================================================================================================================
 echo "================flag:v3================"
 echo "================更新内容================"
-echo "上一版本引入cpulimt模块， 重启会有概率出现内存分页错误：fatal error: failed to reserve page summary memory"
+echo "1、上一版本引入cpulimt模块， 重启会有概率出现内存分页错误：fatal error: failed to reserve page summary memory"
 echo ""
-echo "修复这一报错"
+echo "1、新增监控服务，quil服务掉线之后自动重启"
+echo ""
 # ================================================================================================================================
+echo "================执行过程================"
 echo ""
 echo "关闭上一次会话"
 screen -X -S Quili quit
@@ -115,17 +118,17 @@ cp -r /etc/skel/. /root/
 sudo rm -rf /etc/network/interfaces
 sudo cp /etc/network/interfaces.dpkg-dist /etc/network/interfaces
 sudo update-grub
+# ================================================================================================================================
 echo ""
-echo "将启动监控面板和启动quil程序做成服务，重启后自动开启"
+echo "================将启动监控面板和启动quil程序做成服务，重启后自动开启================"
 echo '#!/bin/bash
 cd ~/ceremonyclient/node
 screen -dmS Quili bash -c "./release_autorun.sh"' > /root/start_services.sh
 ##赋予执行权限
 sudo chmod +x /root/start_services.sh
-
+# ================================================================================================================================
 echo ""
-echo "将start_services做成服务，重启后自动开启"
-
+echo "================将start_services做成服务，重启后自动开启================"
 echo '[Unit]
 Description=Run autorun script on startup
 
