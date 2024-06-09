@@ -215,6 +215,7 @@ echo ''
 sudo systemctl start quili_monitor.service
 sudo systemctl status quili_monitor.service
 echo '启动完毕'
+echo "已经启动quil程序,当前版本号为：  Quilibrium Node - v1.4.19 – Betelgeuse"
 # # ================================================================================================================================
 
 
