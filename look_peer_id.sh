@@ -1,5 +1,5 @@
 #!/bin/bash
-echo '=================flag:v4================='
+echo '=================flag:v5================='
 cd ~/ceremonyclient/node
 ./node-1.4.18-linux-amd64 -peer-id
 # cd ~
