@@ -82,97 +82,140 @@
 
 
 
+# # ================================================================================================================================
+# echo "================flag:v4================"
+# echo "================更新内容================"
+# echo "1、上一版本引入cpulimt模块， 重启会有概率出现内存分页错误：fatal error: failed to reserve page summary memory"
+# echo ""
+# echo "2、新增监控服务，quil服务掉线之后自动重启"
+# echo ""
+# echo "3、新增grpcurl，修改了config.yaml配置文件，可以直接在本机进行peer在线查询"
+# echo ""
+# # ================================以root用户运行脚本================================================================================================
+# # 检查是否以root用户运行脚本
+# if [ "$(id -u)" != "0" ]; then
+#     echo "此脚本需要以root用户权限运行。"
+#     echo "请尝试使用 'sudo -i' 命令切换到root用户，然后再次运行此脚本。"
+#     exit 1
+# fi
+# # ===================================公共模块===监控screen模块======================================================================
+# cd ~
+# #监控screen脚本
+# echo '#!/bin/bash
+# while true
+# do
+#     if ! screen -list | grep -q "Quili"; then
+#         echo "Screen session not found, restarting..."
+#         cd /root/ceremonyclient/node
+#         screen -dmS Quili bash -c "./release_autorun.sh"
+#     fi
+#     sleep 10  # 每隔10秒检查一次
+# done' > monit.sh
+# ##给予执行权限
+# chmod +x monit.sh
+# # ================================================================================================================================
+# echo '[Unit]
+# Description=Quili Monitor Service
+# After=network.target
+
+# [Service]
+# Type=simple
+# ExecStart=/bin/bash /root/monit.sh
+
+# [Install]
+# WantedBy=multi-user.target' > /etc/systemd/system/quili_monitor.service
+# sudo systemctl daemon-reload
+# sudo systemctl enable quili_monitor.service
+# sudo systemctl start quili_monitor.service
+# # sudo systemctl status quili_monitor.service
+
+# # ===================================增加配置文件，可以查询peer在线情况======================================================================
+# echo ''
+# echo '将go加入全局环境'
+# source /root/.gvm/scripts/gvm
+# gvm install go1.4 -B
+# gvm use go1.4
+# export GOROOT_BOOTSTRAP=$GOROOT
+# gvm install go1.17.13
+# gvm use go1.17.13
+# export GOROOT_BOOTSTRAP=$GOROOT
+# gvm install go1.20.2
+# gvm use go1.20.2
+# echo '查询go的版本号'
+# go version
+# echo ''
+# echo '安装grpcurl'
+# go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest
+# echo ''
+# echo '将listenGrpcMultiaddr和listenRESTMultiaddr写入配置文件'
+# sed -i 's|listenGrpcMultiaddr: ""|listenGrpcMultiaddr: "/ip4/127.0.0.1/tcp/8337"|' ./ceremonyclient/node/.config/config.yml
+# sed -i 's|listenRESTMultiaddr: ""|listenRESTMultiaddr: "/ip4/127.0.0.1/tcp/8338"|' ./ceremonyclient/node/.config/config.yml
+
+# # ===================================清除缓存执行过程======================================================================
+# echo "================清除缓存执行过程================"
+# echo ""
+# echo "关闭上一次会话"
+# screen -X -S Quili quit
+# echo ""
+# echo "清除缓存"
+# sudo rm -rf /var/log/*
+# sudo rm -rf /tmp/*
+# sudo apt-get remove --purge $(dpkg --get-selections l grep -v deinstall |grep -v "linux-image" |awk '{print $1}')
+# sudo apt-get -y autoremove
+# sudo apt-get -y clean
+# cp -r /etc/skel/. /root/
+# sudo rm -rf /etc/network/interfaces
+# sudo cp /etc/network/interfaces.dpkg-dist /etc/network/interfaces
+# sudo update-grub
+# # ================================================================================================================================
+# echo ""
+# echo "修复完成，机器自动重启，无需操作，会自动重启相关服务"
+# sudo reboot
+
+
+
 # ================================================================================================================================
-echo "================flag:v4================"
+echo "================flag:v5================"
 echo "================更新内容================"
-echo "1、上一版本引入cpulimt模块， 重启会有概率出现内存分页错误：fatal error: failed to reserve page summary memory"
+echo "1、内存占用降低，cpu占用升高，cpu成为主导因素"
 echo ""
-echo "2、新增监控服务，quil服务掉线之后自动重启"
+echo "2、node/.config 下新增store文件夹，需要备份的文件现为3份：config.yml, keys.yml, store文件夹"
 echo ""
-echo "3、新增grpcurl，修改了config.yaml配置文件，可以直接在本机进行peer在线查询"
+echo "3、可实时查询余额"
 echo ""
-# ================================以root用户运行脚本================================================================================================
-# 检查是否以root用户运行脚本
+# ================================================================================================================================
+# # 检查是否以root用户运行脚本
 if [ "$(id -u)" != "0" ]; then
     echo "此脚本需要以root用户权限运行。"
     echo "请尝试使用 'sudo -i' 命令切换到root用户，然后再次运行此脚本。"
     exit 1
 fi
-# ===================================公共模块===监控screen模块======================================================================
-cd ~
-#监控screen脚本
-echo '#!/bin/bash
-while true
-do
-    if ! screen -list | grep -q "Quili"; then
-        echo "Screen session not found, restarting..."
-        cd /root/ceremonyclient/node
-        screen -dmS Quili bash -c "./release_autorun.sh"
-    fi
-    sleep 10  # 每隔10秒检查一次
-done' > monit.sh
-##给予执行权限
-chmod +x monit.sh
-# ================================================================================================================================
-echo '[Unit]
-Description=Quili Monitor Service
-After=network.target
-
-[Service]
-Type=simple
-ExecStart=/bin/bash /root/monit.sh
-
-[Install]
-WantedBy=multi-user.target' > /etc/systemd/system/quili_monitor.service
-sudo systemctl daemon-reload
-sudo systemctl enable quili_monitor.service
-sudo systemctl start quili_monitor.service
-# sudo systemctl status quili_monitor.service
-
-# ===================================增加配置文件，可以查询peer在线情况======================================================================
+# # ===================================停止监控服务======================================================================
+echo '停止监控服务,因为需要更新版本'
 echo ''
-echo '将go加入全局环境'
-source /root/.gvm/scripts/gvm
-gvm install go1.4 -B
-gvm use go1.4
-export GOROOT_BOOTSTRAP=$GOROOT
-gvm install go1.17.13
-gvm use go1.17.13
-export GOROOT_BOOTSTRAP=$GOROOT
-gvm install go1.20.2
-gvm use go1.20.2
-echo '查询go的版本号'
-go version
-echo ''
-echo '安装grpcurl'
-go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest
-echo ''
-echo '将listenGrpcMultiaddr和listenRESTMultiaddr写入配置文件'
-sed -i 's|listenGrpcMultiaddr: ""|listenGrpcMultiaddr: "/ip4/127.0.0.1/tcp/8337"|' ./ceremonyclient/node/.config/config.yml
-sed -i 's|listenRESTMultiaddr: ""|listenRESTMultiaddr: "/ip4/127.0.0.1/tcp/8338"|' ./ceremonyclient/node/.config/config.yml
-
-# ===================================清除缓存执行过程======================================================================
-echo "================清除缓存执行过程================"
-echo ""
-echo "关闭上一次会话"
+sudo systemctl stop quili_monitor.service
+# # ================================================================================================================================
+# # ===================================停止当前会话======================================================================
 screen -X -S Quili quit
-echo ""
-echo "清除缓存"
-sudo rm -rf /var/log/*
-sudo rm -rf /tmp/*
-sudo apt-get remove --purge $(dpkg --get-selections l grep -v deinstall |grep -v "linux-image" |awk '{print $1}')
-sudo apt-get -y autoremove
-sudo apt-get -y clean
-cp -r /etc/skel/. /root/
-sudo rm -rf /etc/network/interfaces
-sudo cp /etc/network/interfaces.dpkg-dist /etc/network/interfaces
-sudo update-grub
-# ================================================================================================================================
-echo ""
-echo "修复完成，机器自动重启，无需操作，会自动重启相关服务"
-sudo reboot
-
-
+# # ================================================================================================================================
+# # ===================================更新版本代码======================================================================
+cd ~/ceremonyclient/node
+git pull
+git switch release-cdn
+echo '检查当前代码分支是否为 release-cdn'
+echo ''
+echo '打印当前代码分支'
+git branch
+echo ''
+echo '更新完毕'
+# # ================================================================================================================================
+# # ===================================启动监控服务======================================================================
+echo '启动监控服务'
+echo ''
+sudo systemctl start quili_monitor.service
+sudo systemctl status quili_monitor.service
+echo '启动完毕'
+# # ================================================================================================================================
 
 
 
