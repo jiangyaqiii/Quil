@@ -60,7 +60,7 @@ git clone https://source.quilibrium.com/quilibrium/ceremonyclient.git
 # git clone https://github.com/a3165458/ceremonyclient.git
 cd ~/ceremonyclient
 # 切换分支
-git switch release
+git switch release-cdn
 # 进入ceremonyclient/node目录
 cd ~/ceremonyclient/node 
 # 赋予执行权限
