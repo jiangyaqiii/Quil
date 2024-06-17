@@ -32,7 +32,7 @@ curl -s https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/simple_rest
 
 ===============监控自启动服务================
 
-wget -O monit.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/monit.sh && chmod +x monit.sh && ./monit.sh
+wget -O Monit.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/Monit.sh && chmod +x Monit.sh && ./Monit.sh
 
 ===========================================
 
