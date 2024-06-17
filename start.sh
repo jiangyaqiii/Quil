@@ -14,22 +14,22 @@ echo "ulimit -v 640000;" >> ~/.bashrc
 source ~/.bashrc
 
 # 增加swap空间
-# sudo mkdir /swap
-# sudo fallocate -l 24G /swap/swapfile
-# sudo chmod 600 /swap/swapfile
-# sudo mkswap /swap/swapfile
-# sudo swapon /swap/swapfile
-# echo '/swap/swapfile swap swap defaults 0 0' >> /etc/fstab
+sudo mkdir /swap
+sudo fallocate -l 24G /swap/swapfile
+sudo chmod 600 /swap/swapfile
+sudo mkswap /swap/swapfile
+sudo swapon /swap/swapfile
+echo '/swap/swapfile swap swap defaults 0 0' >> /etc/fstab
 
-# # 向/etc/sysctl.conf文件追加内容
-# echo -e "\n# 自定义最大接收和发送缓冲区大小" >> /etc/sysctl.conf
-# echo "net.core.rmem_max=600000000" >> /etc/sysctl.conf
-# echo "net.core.wmem_max=600000000" >> /etc/sysctl.conf
+# 向/etc/sysctl.conf文件追加内容
+echo -e "\n# 自定义最大接收和发送缓冲区大小" >> /etc/sysctl.conf
+echo "net.core.rmem_max=600000000" >> /etc/sysctl.conf
+echo "net.core.wmem_max=600000000" >> /etc/sysctl.conf
 
-# echo "配置已添加到/etc/sysctl.conf"
+echo "配置已添加到/etc/sysctl.conf"
 
-# # 重新加载sysctl配置以应用更改
-# sysctl -p
+# 重新加载sysctl配置以应用更改
+sysctl -p
 
 # echo "sysctl配置已重新加载"
 
