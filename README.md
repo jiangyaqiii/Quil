@@ -2,43 +2,43 @@
 
 ===============启动quil脚本================
 
-wget -O start.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/start.sh && chmod +x start.sh && ./start.sh
+wget -O start.sh https://raw.githubusercontent.com/jiangyaqiii/Quil/main/start.sh && chmod +x start.sh && ./start.sh
 
 ===========================================
 
 ===============重启quil脚本================
 
-wget -O restart.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/restart.sh && chmod +x restart.sh && ./restart.sh
+wget -O restart.sh https://raw.githubusercontent.com/jiangyaqiii/Quil/main/restart.sh && chmod +x restart.sh && ./restart.sh
 
 ===========================================
 
 ===============查阅对等ID================
 
-wget -O look_peer_id.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/look_peer_id.sh && chmod +x look_peer_id.sh && ./look_peer_id.sh
+wget -O look_peer_id.sh https://raw.githubusercontent.com/jiangyaqiii/Quil/main/look_peer_id.sh && chmod +x look_peer_id.sh && ./look_peer_id.sh
 
 ===========================================
 
 ===============查阅余额================
 
-wget -O look_balance.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/look_balance.sh && chmod +x look_balance.sh && ./look_balance.sh
+wget -O look_balance.sh https://raw.githubusercontent.com/jiangyaqiii/Quil/main/look_balance.sh && chmod +x look_balance.sh && ./look_balance.sh
 
 ===========================================
 
 ===============简单重启================
 
-curl -s https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/simple_restart.sh |bash
+curl -s https://raw.githubusercontent.com/jiangyaqiii/Quil/main/simple_restart.sh |bash
 
 ===========================================
 
 ===============监控自启动服务================
 
-wget -O Monit.sh https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/Monit.sh && chmod +x Monit.sh && ./Monit.sh
+wget -O Monit.sh https://raw.githubusercontent.com/jiangyaqiii/Quil/main/Monit.sh && chmod +x Monit.sh && ./Monit.sh
 
 ===========================================
 
 ===============若查询peer在线情况时报错，执行此脚本安装grpcurl================
 
-curl -s https://raw.githubusercontent.com/jiangyaqiii/QuilStart/main/grpcurl.sh |bash
+curl -s https://raw.githubusercontent.com/jiangyaqiii/Quil/main/grpcurl.sh |bash
 
 ===========================================
 
