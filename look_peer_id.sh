@@ -1,7 +1,7 @@
 #!/bin/bash
 echo '=================flag:v5================='
 cd ~/ceremonyclient/node
-./node-1.4.19-linux-amd64 -peer-id
+./node-1.4.21-linux-amd64 -peer-id
 # cd ~
 # echo ''
 # echo '========================================='
