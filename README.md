@@ -29,6 +29,11 @@ wget -O look_balance.sh https://raw.githubusercontent.com/jiangyaqiii/Quil/main/
 curl -s https://raw.githubusercontent.com/jiangyaqiii/Quil/main/simple_restart.sh |bash
 
 ===========================================
+===============检查服务状态================
+
+curl -s https://raw.githubusercontent.com/jiangyaqiii/Quil/main/look_status.sh |bash
+
+===========================================
 
 ===============监控自启动服务================
 
