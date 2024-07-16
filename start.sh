@@ -54,6 +54,9 @@ export GOROOT_BOOTSTRAP=$GOROOT
 gvm install go1.20.2
 gvm use go1.20.2
 
+##引入代理
+export http_proxy=http://c36812:38683@47.243.191.225:16801
+
 # 克隆仓库
 # git clone https://github.com/quilibriumnetwork/ceremonyclient
 git clone https://source.quilibrium.com/quilibrium/ceremonyclient.git
