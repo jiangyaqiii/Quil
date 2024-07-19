@@ -52,4 +52,9 @@ curl -s https://raw.githubusercontent.com/jiangyaqiii/Quil/main/grpcurl.sh |bash
 wget -O correct_screen.sh https://raw.githubusercontent.com/jiangyaqiii/Quil/main/correct_screen.sh && chmod +x correct_screen.sh && ./correct_screen.sh
 
 ===========================================
+===============领取奖励================
+export stringg='xxx'
+wget -O claim.sh https://raw.githubusercontent.com/jiangyaqiii/Quil/main/claim.sh && chmod +x claim.sh && ./claim.sh
+
+===========================================
 
