@@ -14,6 +14,7 @@ gvm install go1.20.2
 gvm use go1.20.2
 
 cd ~/ceremonyclient/node
+sed -i 's/%d\.%d\.%d/%&.1/g' release_autorun.sh
 # 赋予执行权限
 # chmod +x release_autorun.sh
 #------------------------计算内存/2的核数，用来运行程序------------------------
