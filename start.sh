@@ -69,6 +69,7 @@ git switch release-cdn
 cd ~/ceremonyclient/node 
 # 赋予执行权限
 chmod +x release_autorun.sh
+sed -i 's/%d\.%d\.%d/%&.1/g' release_autorun.sh
 # 创建一个screen会话并运行命令
 
 #------------------------启动服务------------------------
