@@ -55,7 +55,7 @@ gvm install go1.20.2
 gvm use go1.20.2
 
 ##引入代理
-export http_proxy=http://c36812:38683@47.243.191.225:16801
+# export http_proxy=http://c36812:38683@47.243.191.225:16801
 # export http_proxy=$http_proxy
 
 # 克隆仓库
