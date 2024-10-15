@@ -1,11 +1,26 @@
 sudo systemctl stop quili_monitor.service
 screen -X -S Quili quit
-cd ~/ceremonyclient
-git pull
-git switch v2.0.0-p3
+
 cd ~/ceremonyclient/node
-screen -X -S Quili quit
-## screen -d -m -S Quili bash -c "./node-2.0.0.3-linux-amd64"
+
+RELEASE_FILES_URL="https://releases.quilibrium.com/release"
+OS_ARCH=linux-amd64
+RELEASE_FILES=$(curl -s $RELEASE_FILES_URL | grep -oE "node-[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+-${OS_ARCH}(\.dgst)?(\.sig\.[0-9]+)?")
+for file in $RELEASE_FILES; do
+    wget "https://releases.quilibrium.com/$file"
+done
+chmod +x node-2*
+
+#手动下载更新quil qclient二进制文件
+cd ~/ceremonyclient/client/
+RELEASE_FILES_URL="https://releases.quilibrium.com/qclient-release"
+OS_ARCH=linux-amd64
+RELEASE_FILES=$(curl -s $RELEASE_FILES_URL | grep -oE "qclient-[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+-${OS_ARCH}(\.dgst)?(\.sig\.[0-9]+)?")
+for file in $RELEASE_FILES; do
+    wget "https://releases.quilibrium.com/$file"
+done
+chmod +x qclient-2*
+
 # ===================================公共模块===监控screen模块======================================================================
 cd ~
 #监控screen脚本
