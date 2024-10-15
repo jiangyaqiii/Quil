@@ -64,12 +64,11 @@ git clone https://source.quilibrium.com/quilibrium/ceremonyclient.git
 # git clone https://github.com/a3165458/ceremonyclient.git
 cd ~/ceremonyclient
 # 切换分支
-git switch release-cdn
+git switch v2.0.0-p3
 # 进入ceremonyclient/node目录
 cd ~/ceremonyclient/node 
 # 赋予执行权限
-chmod +x release_autorun.sh
-sed -i 's/%d\.%d\.%d/&.1/g' release_autorun.sh
+chmod +x node-2.0.0.3-linux-amd64
 # 创建一个screen会话并运行命令
 
 #------------------------启动服务------------------------
@@ -83,7 +82,7 @@ do
     if ! screen -list | grep -q "Quili"; then
         echo "Screen session not found, restarting..."
         cd /root/ceremonyclient/node
-        screen -dmS Quili bash -c "./release_autorun.sh"
+        screen -d -m -S Quili bash -c "./node-2.0.0.3-linux-amd64"
     fi
     sleep 10  # 每隔10秒检查一次
 done' > monit.sh
