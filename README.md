@@ -58,3 +58,9 @@ wget -O claim.sh https://raw.githubusercontent.com/jiangyaqiii/Quil/main/claim.s
 
 ===========================================
 
+===========================================
+===============升级至2.0.0.3================
+curl -s https://raw.githubusercontent.com/jiangyaqiii/Quil/main/release2_0_3.sh |bash
+
+===========================================
+
