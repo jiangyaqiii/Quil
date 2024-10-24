@@ -73,3 +73,8 @@ curl -s https://raw.githubusercontent.com/jiangyaqiii/Quil/main/upgrade_2_0_1.sh
 curl -s https://raw.githubusercontent.com/jiangyaqiii/Quil/main/start_2_0_1.sh |bash
 
 ===========================================
+
+===============自动重启服务================
+curl -s https://raw.githubusercontent.com/jiangyaqiii/Quil/main/auto_restart.sh |bash
+
+===========================================
