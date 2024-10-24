@@ -36,5 +36,7 @@ for f in $(curl -s https://releases.quilibrium.com/qclient-release | grep linux-
 done
 chmod +x qclient-2*
 
+systemctl stop quili_monitor.service
+pkill screen
 cd /root/ceremonyclient/node
 screen -dmS quili bash -c ' ./node-2.0.1-linux-amd64'
