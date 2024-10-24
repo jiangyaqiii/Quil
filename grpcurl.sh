@@ -20,4 +20,4 @@ sed -i 's|listenGrpcMultiaddr: ""|listenGrpcMultiaddr: "/ip4/127.0.0.1/tcp/8337"
 sed -i 's|listenRESTMultiaddr: ""|listenRESTMultiaddr: "/ip4/127.0.0.1/tcp/8338"|' ./ceremonyclient/node/.config/config.yml
 echo ''
 echo '杀死本次quil会话'
-screen -X -S Quili quit
+screen -X -S quili quit
