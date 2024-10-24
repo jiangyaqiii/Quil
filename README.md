@@ -65,6 +65,6 @@ curl -s https://raw.githubusercontent.com/jiangyaqiii/Quil/main/release2_0_3.sh 
 ===========================================
 
 ===============升级至2.0.1================
-curl -s https://raw.githubusercontent.com/jiangyaqiii/Quil/main/release2_0_1.sh |bash
+curl -s https://raw.githubusercontent.com/jiangyaqiii/Quil/main/upgrade_2_0_1.sh |bash
 
 ===========================================
