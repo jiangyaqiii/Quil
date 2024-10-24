@@ -86,12 +86,10 @@ cd ~
 echo '#!/bin/bash
 while true
 do
-    if ! screen -list | grep -q "quili"; then
-        echo "Screen session not found, restarting..."
-        cd /root/ceremonyclient/node
-        screen -dmS quili bash -c ' ./node-2.0.1-linux-amd64'
-    fi
-    sleep 10  # 每隔10秒检查一次
+    echo "Screen session not found, restarting..."
+    cd /root/ceremonyclient/node
+    screen -dmS quili bash -c ' ./node-2.0.1-linux-amd64'
+    sleep 1800  # 每隔10秒检查一次
 done' > monit.sh
 ##给予执行权限
 chmod +x monit.sh
