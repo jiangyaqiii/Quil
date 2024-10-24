@@ -10,7 +10,7 @@ export GOROOT_BOOTSTRAP=$GOROOT
 gvm install go1.20.2
 gvm use go1.20.2
 echo '查询go的版本号'
-go -v
+go version
 echo ''
 echo '安装grpcurl'
 go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest
