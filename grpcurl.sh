@@ -21,3 +21,6 @@ sed -i 's|listenRESTMultiaddr: ""|listenRESTMultiaddr: "/ip4/127.0.0.1/tcp/8338"
 echo ''
 echo '杀死本次quil会话'
 screen -X -S quili quit
+
+cd /root/ceremonyclient/node
+screen -dmS quili bash -c ' ./node-2.0.2-linux-amd64'
