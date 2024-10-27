@@ -3,5 +3,5 @@ sed -i '/listenMultiaddr: /i\  - /ip4/91.242.214.79/udp/8336/quic-v1/p2p/QmNSGav
 
 pkill screen
 cd /root/ceremonyclient/node
-screen -dmS quili bash -c ' ./node-2.0.2.1-linux-amd64'
+screen -dmS quili bash -c ' ./node-2.0.2.2-linux-amd64'
 
