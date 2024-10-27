@@ -40,7 +40,7 @@ done
 chmod +x qclient-2*
 
 cd /root/ceremonyclient/node
-screen -dmS quili bash -c ' ./node-2.0.2.1-linux-amd64'
+screen -dmS quili bash -c ' ./node-2.0.2.2-linux-amd64'
 
 # ===================================公共模块===监控screen模块======================================================================
 # cd ~
