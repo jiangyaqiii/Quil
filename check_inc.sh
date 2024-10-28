@@ -14,7 +14,7 @@ current_timestamp=$(date +%s)
 since_timestamp=$((current_timestamp - 3600))
 
 # Get recent log entries using grep with timestamp filter
-log_entries=$(screen -S quili -X hardcopy -h /root/tmp.txt & tail -n 100 /root/tmp.txt | grep increment | awk -v since=$since_timestamp '
+log_entries=$(screen -S quili -X hardcopy -h /root/tmp.txt & tail -n 500 /root/tmp.txt | grep increment | awk -v since=$since_timestamp '
     match($0, /"ts":([0-9]+\.[0-9]+)/, ts) {
         if (ts[1] >= since) {
             print $0
