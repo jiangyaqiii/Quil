@@ -23,4 +23,4 @@ echo '杀死本次quil会话'
 screen -X -S quili quit
 
 cd /root/ceremonyclient/node
-screen -dmS quili bash -c ' ./node-2.0.2.2-linux-amd64'
+screen -dmS quili bash -c ' ./node-2.0.2.3-linux-amd64'
